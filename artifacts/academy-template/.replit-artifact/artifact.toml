@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/academy-template/"
+title = "Academy Template (White Label)"
+version = "1.0.0"
+id = "artifacts/academy-template"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/academy-template/" ]
+localPort = 23589
+
+[services.development]
+run = "pnpm --filter @workspace/academy-template run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/academy-template", "run", "build" ]
+publicDir = "artifacts/academy-template/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23589"
+BASE_PATH = "/academy-template/"

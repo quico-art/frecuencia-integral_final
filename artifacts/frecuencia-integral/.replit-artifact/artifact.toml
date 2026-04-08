@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Frecuencia Integral Academy"
+version = "1.0.0"
+id = "artifacts/frecuencia-integral"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18400
+
+[services.development]
+run = "pnpm --filter @workspace/frecuencia-integral run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/frecuencia-integral", "run", "build" ]
+publicDir = "artifacts/frecuencia-integral/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18400"
+BASE_PATH = "/"

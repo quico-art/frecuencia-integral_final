@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/fi-lab/"
+title = "Frecuencia Integral Academy — Pruebas 3D"
+version = "1.0.0"
+id = "artifacts/fi-lab"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/fi-lab/" ]
+localPort = 18778
+
+[services.development]
+run = "pnpm --filter @workspace/fi-lab run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/fi-lab", "run", "build" ]
+publicDir = "artifacts/fi-lab/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18778"
+BASE_PATH = "/fi-lab/"

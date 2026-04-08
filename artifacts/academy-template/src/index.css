@@ -1,0 +1,23 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #ffffff;
+  color: #1D1D1F;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] > summary span:last-child { content: "−"; }
+
+@media (min-width: 768px) {
+  .at-panel { display: flex !important; }
+}
+
+html { scroll-behavior: smooth; }
+
+input, textarea, button, select {
+  font-family: inherit;
+  font-size: inherit;
+}
